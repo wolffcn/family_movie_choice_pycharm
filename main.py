@@ -1,42 +1,27 @@
 
-#Takes input from each family member with their top movie choices and picks which one will be the best choice
-#step 1: Ask what movies are playing at the local theater and create a list and  Make list of family members:
-#step 2: Ask family member to rank movie choices:
-#step 3: Iterate through family to ask movie choices:
-#step 5: create a score based on choice
-#make an iteration of movie_choices to count how many times they appear in each list first second third...
-#step 7: add up each movies score for a final score. If a movie is a first choice it gets 3, then 2 then.
-#step 8: Make it a dictionary instead of a list
+#takes input from each family member with their top movie choices and picks which one will be the best choice
 
 
-#ideas for next level: API to micon?
-# GUI? or learn python phone app?
-
-# movies = input("What movies are out at local theaters right now? ")
-movies = "Mocking Jay, The Color Purple, Auquaman, Trolls, Migration, Wonka, Ferrari, Iron Claw"
+movies = input("What movies are out at local theaters right now? ")
 movie_choices = [movie.strip() for movie in movies.split(',')]
 
-# family = ["Mom", "Dad", "Ryan", "Christina", "Brandon", "Jordan", "Jason"]
-family = ["Mom", "Dad"]
+family = ["Mom", "Dad", "Ryan", "Christina", "Brandon", "Jordan", "Jason"]
 
-# first_choices = []
-# second_choices = []
-# third_choices = []
-# for person in family:
-#     first_choice = input(f"{person}, what is your first choice? ")
-#     first_choices.append(first_choice)
-#
-#     second_choice = input(f"{person}, what is your second choice? ")
-#     second_choices.append(second_choice)
-#
-#     third_choice = input(f"{person}, what is your third choice? ")
-#     third_choices.append(third_choice)
+first_choices = []
+second_choices = []
+third_choices = []
+for person in family:
+    first_choice = input(f"{person}, what is your first choice? ")
+    first_choices.append(first_choice)
 
-# for testing
-first_choices = ['Mocking Jay', 'Wonka']
-second_choices = ['Trolls', 'Migration']
-third_choices = ['Migration', 'The Color Purple']
+    second_choice = input(f"{person}, what is your second choice? ")
+    second_choices.append(second_choice)
 
+    third_choice = input(f"{person}, what is your third choice? ")
+    third_choices.append(third_choice)
+
+
+#makes a score based on families movie ranking
 movie_scores = {}
 
 for movie in movie_choices:
@@ -48,8 +33,8 @@ for movie in movie_choices:
     if movie in third_choices:
         movie_scores[movie] = third_choices.count(movie) * 1 + movie_scores[movie]
 
-# Step 7: Print the scores
-# print("Movie Scores:")
+#prints movies scores to determine the best choice for a family movie
+
 ordered_movie_scores = dict(sorted(movie_scores.items(), key=lambda item: item[1], reverse=True))
 count = 0
 for movie, score in ordered_movie_scores.items():
@@ -59,8 +44,5 @@ for movie, score in ordered_movie_scores.items():
         print(f"{movie}: {score}")
     count = count + 1
 
-
-#scripts
-# Mocking Jay, The Color Purple, Auquaman, Trolls, Migration, Wonka, Ferrari, Iron Claw
 
 
